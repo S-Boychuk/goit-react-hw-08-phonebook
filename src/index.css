@@ -1,12 +1,21 @@
 @import-normalize; /* bring in normalize.css styles */
 
 body {
+  position: relative;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ffd8de;
+}
+
+main {
+  position: relative;
+  flex-grow: 1;
+  background-image: url('./technology.png');
+  background-size: contain;
 }
 
 code {
@@ -30,11 +39,16 @@ ul {
   padding-left: 0;
 }
 
-#root {
+.main-content-wrapper {
   max-width: 500px;
   margin: 50px auto;
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
-
   background-color: #d8e2dc;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

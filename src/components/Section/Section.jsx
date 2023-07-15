@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 const Section = ({ title, children }) => {
   return (
     <section className={css.section}>
-      <h2 className={css['section-title']}>{title}</h2>
+      {title && <h2 className={css['section-title']}>{title}</h2>}
       {children}
     </section>
   );
