@@ -13,9 +13,9 @@
 
 .logout-btn {
   background-color: #d8e2dc;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: 2px solid transparent;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
@@ -23,7 +23,7 @@
   cursor: pointer;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     border 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logout-btn:hover,

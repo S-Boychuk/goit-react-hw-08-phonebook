@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import css from './Navigation.module.css';
 
 const Navigation = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   const navLinkClassName = ({ isActive }) =>
     isActive ? css['active'] : css['nav-link'];

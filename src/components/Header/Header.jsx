@@ -5,7 +5,7 @@ import css from './Header.module.css';
 import Container from 'components/Container/Container';
 
 const Header = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return (
     <header className={css.header}>
