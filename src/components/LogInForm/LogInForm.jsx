@@ -1,9 +1,29 @@
+import { useDispatch } from 'react-redux';
 import css from './LogInForm.module.css';
+import { login } from 'redux/Auth/operations';
 
 const LogInForm = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      login({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
+  };
+
   return (
     <div className={css['log-in-form-wrapper']}>
-      <form className={css['log-in-form']} autoComplete="off">
+      <form
+        className={css['log-in-form']}
+        autoComplete="off"
+        onSubmit={handleSubmit}
+      >
         <label className={css['log-in-label']}>
           <span className={css['label-span']}> Email </span>
           <input className={css['log-in-input']} type="email" name="email" />

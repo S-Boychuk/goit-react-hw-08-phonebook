@@ -3,9 +3,11 @@ import UserMenu from 'components/UserMenu/UserMenu';
 import Authorization from 'components/Authorization/Authorization';
 import css from './Header.module.css';
 import Container from 'components/Container/Container';
+import { selectIsLoggedIn } from 'redux/Auth/selectors';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <header className={css.header}>
