@@ -6,9 +6,22 @@ import SharedLayout from './SharedLayout/SharedLayout';
 import { Routes, Route } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectIsRefreshing } from 'redux/Auth/selectors';
+import { useEffect } from 'react';
+import { refreshUser } from 'redux/Auth/operations';
 
 const App = () => {
-  return (
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />

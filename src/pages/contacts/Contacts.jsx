@@ -5,17 +5,19 @@ import ContactList from 'components/ContactList/ContactList';
 
 const Contacts = () => {
   return (
-    <main>
-      <div className="main-content-wrapper">
-        <Section title="Phonebook">
-          <ContactForm />
-        </Section>
-        <Section title="Contacts">
-          <Filter />
-          <ContactList />
-        </Section>
-      </div>
-    </main>
+    <>
+      <main>
+        <div className="main-content-wrapper">
+          <Section title="Phonebook">
+            <ContactForm />
+          </Section>
+          <Section title="Contacts">
+            <Filter />
+            <ContactList />
+          </Section>
+        </div>
+      </main>
+    </>
   );
 };
 

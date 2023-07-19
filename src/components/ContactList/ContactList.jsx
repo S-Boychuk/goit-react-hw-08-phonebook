@@ -1,20 +1,27 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
+import {
+  selectContacts,
+  selectError,
+  selectFilter,
+  selectIsLoading,
+} from 'redux/selectors';
 import { fetchContacts } from 'redux/operations';
 import ContactItem from 'components/ContactItem/ContactItem';
 import Loader from 'components/Loader';
 import css from './ContactList.module.css';
 
 const ContactList = () => {
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const { contacts, isLoading, error } = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   const filterContacts = () => {
     if (filter !== '') {
