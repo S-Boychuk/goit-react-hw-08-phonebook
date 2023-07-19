@@ -1,11 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
-import Home from 'pages/home/Home';
-import Contacts from 'pages/contacts/Contacts';
-import LogIn from 'pages/LogIn';
-import Register from 'pages/Register';
 
 import SharedLayout from './SharedLayout';
 import { PrivateRoute } from 'components/PrivateRoute';
@@ -13,6 +8,11 @@ import { PublicRoute } from 'components/PublicRoute';
 
 import { selectIsRefreshing } from 'redux/Auth/selectors';
 import { refreshUser } from 'redux/Auth/operations';
+
+const Home = lazy(() => import('../pages/home/Home'));
+const Register = lazy(() => import('../pages/Register'));
+const LogIn = lazy(() => import('../pages/LogIn'));
+const Contacts = lazy(() => import('../pages/contacts/Contacts'));
 
 const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -30,9 +30,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route
           path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/log-in" component={<Contacts />} />
-          }
+          element={<PrivateRoute redirectTo="/" component={<Contacts />} />}
         />
         <Route
           path="/register"
