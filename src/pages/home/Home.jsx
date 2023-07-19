@@ -1,7 +1,7 @@
-import Section from 'components/Section/Section';
-import css from './Home.module.css';
-import Container from 'components/Container/Container';
 import { Helmet } from 'react-helmet';
+import Section from 'components/Section/Section';
+import Container from 'components/Container/Container';
+import css from './Home.module.css';
 
 const Home = () => {
   return (

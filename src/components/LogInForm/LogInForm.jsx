@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import css from './LogInForm.module.css';
 import { login } from 'redux/Auth/operations';
+import css from './LogInForm.module.css';
 
 const LogInForm = () => {
   const dispatch = useDispatch();

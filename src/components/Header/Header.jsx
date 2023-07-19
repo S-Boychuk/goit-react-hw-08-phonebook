@@ -1,10 +1,12 @@
-import Navigation from 'components/Navigation/Navigation';
-import UserMenu from 'components/UserMenu/UserMenu';
-import Authorization from 'components/Authorization/Authorization';
-import css from './Header.module.css';
-import Container from 'components/Container/Container';
-import { selectIsLoggedIn } from 'redux/Auth/selectors';
 import { useSelector } from 'react-redux';
+
+import Container from 'components/Container/Container';
+import Navigation from 'components/Navigation/Navigation';
+import Authorization from 'components/Authorization/Authorization';
+import UserMenu from 'components/UserMenu/UserMenu';
+
+import { selectIsLoggedIn } from 'redux/Auth/selectors';
+import css from './Header.module.css';
 
 const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

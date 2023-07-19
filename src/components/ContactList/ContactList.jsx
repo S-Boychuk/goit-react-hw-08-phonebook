@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+import ContactItem from 'components/ContactItem/ContactItem';
+import Loader from 'components/Loader';
+
+import { fetchContacts } from 'redux/Contacts/operations';
 import {
   selectContacts,
   selectError,
   selectFilter,
   selectIsLoading,
-} from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
-import ContactItem from 'components/ContactItem/ContactItem';
-import Loader from 'components/Loader';
+} from 'redux/Contacts/selectors';
+
 import css from './ContactList.module.css';
 
 const ContactList = () => {
@@ -37,7 +40,7 @@ const ContactList = () => {
   return (
     <>
       {isLoading && (
-        <div className={css.backdrop}>
+        <div className="backdrop">
           <Loader />
         </div>
       )}
