@@ -8,12 +8,14 @@ const LogInForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
+
     dispatch(
       login({
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
     );
+
     form.reset();
   };
 
