@@ -22,7 +22,7 @@ const Home = () => {
                 </Link>{' '}
                 or{' '}
                 <Link className={css.link} to="/log-in">
-                  sign in
+                  log in
                 </Link>
                 .
               </p>

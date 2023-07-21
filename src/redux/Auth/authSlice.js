@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import { register, login, logOut, refreshUser } from './operations';
 
 const initialState = {
@@ -6,39 +7,63 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  error: null,
+};
+
+const handleFulfilledRegister = (state, action) => {
+  toast.success(`You have successfully registered`);
+  state.user = action.payload.user;
+  state.token = action.payload.token;
+  state.isLoggedIn = true;
+};
+
+const handleFulfilledLogin = (state, action) => {
+  toast.success(`You have successfully logged in`);
+  state.user = action.payload.user;
+  state.token = action.payload.token;
+  state.isLoggedIn = true;
+};
+
+const handleFulfilledLogOut = (state, action) => {
+  state.user = { name: null, email: null };
+  state.token = null;
+  state.isLoggedIn = false;
+};
+
+const handlePendingRefresh = (state, action) => {
+  state.isRefreshing = true;
+};
+
+const handleFulfilledRefresh = (state, action) => {
+  state.user = action.payload;
+  state.isLoggedIn = true;
+  state.isRefreshing = false;
+};
+
+const handleRejectedRefresh = (state, action) => {
+  state.isRefreshing = false;
+};
+
+const handleRejectedRegisterAndLogin = (state, action) => {
+  toast.error(action.payload);
+  state.error = action.payload;
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: {
-    [register.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
-      state.isRefreshing = false;
-    },
-    [login.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
-    },
-    [logOut.fulfilled](state) {
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
-    },
-    [refreshUser.pending](state) {
-      state.isRefreshing = true;
-    },
-    [refreshUser.fulfilled](state, action) {
-      state.user = action.payload;
-      state.isLoggedIn = true;
-      state.isRefreshing = false;
-    },
-    [refreshUser.rejected](state) {
-      state.isRefreshing = false;
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(register.fulfilled, handleFulfilledRegister)
+      .addCase(login.fulfilled, handleFulfilledLogin)
+      .addCase(logOut.fulfilled, handleFulfilledLogOut)
+      .addCase(refreshUser.fulfilled, handleFulfilledRefresh)
+      .addCase(refreshUser.pending, handlePendingRefresh)
+      .addCase(refreshUser.rejected, handleRejectedRefresh)
+      .addMatcher(
+        isAnyOf(register.rejected, login.rejected),
+        handleRejectedRegisterAndLogin
+      );
   },
 });
 

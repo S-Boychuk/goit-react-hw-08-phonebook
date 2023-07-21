@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/Auth/operations';
+
 import css from './RegistrationForm.module.css';
 
 const RegistrationForm = () => {
@@ -9,19 +10,15 @@ const RegistrationForm = () => {
     e.preventDefault();
     const form = e.currentTarget;
 
-    try {
-      await dispatch(
-        register({
-          name: form.elements.name.value,
-          email: form.elements.email.value,
-          password: form.elements.password.value,
-        })
-      );
+    dispatch(
+      register({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
 
-      form.reset();
-    } catch (error) {
-      console.log('error :>> ', error);
-    }
+    form.reset();
   };
 
   return (
