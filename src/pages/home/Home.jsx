@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import Section from 'components/Section/Section';
 import Container from 'components/Container/Container';
 import css from './Home.module.css';
@@ -15,7 +16,15 @@ const Home = () => {
             <div className={css['greeting-wrap']}>
               <p className={css['greeting-text']}>
                 Welcome to the PhoneBook App! Easily save and manage your
-                contacts in one secure place.
+                contacts in one secure place. To get started, please{' '}
+                <Link className={css.link} to="/register">
+                  register
+                </Link>{' '}
+                or{' '}
+                <Link className={css.link} to="/log-in">
+                  sign in
+                </Link>
+                .
               </p>
             </div>
           </Container>

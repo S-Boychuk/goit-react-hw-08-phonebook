@@ -27,11 +27,13 @@
   width: 80%;
   padding: 10px;
   margin-bottom: 20px;
-  border: none;
+  outline: none;
+  border: 3px solid #ff85a8;
   border-radius: 5px;
+
   background-color: #ffcad4;
   color: #000000;
-  border: 3px solid #ff85a8;
+
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }

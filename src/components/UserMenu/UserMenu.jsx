@@ -6,9 +6,12 @@ import css from './UserMenu.module.css';
 const UserMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+
+  const isMobile = window.innerWidth < 480;
+
   return (
     <div className={css['user-menu-wrapper']}>
-      <p className={css['user-name']}>Welcome, {user.name}</p>
+      {!isMobile && <p className={css['user-name']}>Welcome, {user.name}</p>}
       <button
         className={css['logout-btn']}
         type="button"

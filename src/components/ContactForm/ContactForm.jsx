@@ -36,7 +36,7 @@ const ContactForm = () => {
         contact => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
-      window.alert(`we ara sorry, contact ${name} has already existed`);
+      window.alert(`We ara sorry, contact ${name} has already existed`);
       return;
     }
     dispatch(addContact({ name, number }));

@@ -54,7 +54,7 @@ const ContactList = () => {
         <p className={css['error-text']}>{error}</p>
       ) : (
         <div>
-          <p className={css['no-contact-text']}>Sorry, no contact found</p>
+          <p className={css['no-contact-text']}>Sorry, no contacts found</p>
         </div>
       )}
     </>
